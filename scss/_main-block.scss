@@ -1,0 +1,57 @@
+@import "_variables";
+//*--------------------------------------main-block--------------------------------------------------------------------
+.main-block {
+    background: url(../img/main-block/01.jpg) center/cover no-repeat;
+
+    &__inner {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 102px 0px 30px 0px;
+        text-align: center;
+        font-family: "Impact", sans-serif;
+    }
+
+    &__content {
+        & > * {
+            margin: 0 0 10px 0;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    &__title {
+        line-height: 1.22;
+        font-size: 76px;
+        letter-spacing: 0.02em;
+        margin: 0px 0px 10px 7px;
+    }
+
+    &__subtitle {
+        font-size: 48px;
+        line-height: 1.23;
+        padding: 0px 0px 10px 0px;
+        border-bottom: 1px solid $bl;
+        display: inline-block;
+
+        span {
+            font-size: 34px;
+            line-height: 1;
+            color: $gl;
+            display: block;
+        }
+    }
+
+    &__text {
+        font-family: "Roboto Condensed";
+        font-size: 16px;
+        line-height: 1.2;
+        color: $dg;
+    }
+
+    &__arrow {
+        align-self: center;
+        margin-top: auto;
+    }
+}
