@@ -10,6 +10,18 @@
         padding: 102px 0px 30px 0px;
         text-align: center;
         font-family: "Impact", sans-serif;
+
+        @media (max-width: $lg) {
+            padding-top: 75px;
+        }
+
+        @media (max-width: $md) {
+            padding-top: 60px;
+        }
+
+        @media (max-width: $sm) {
+            padding-top: 55px;
+        }
     }
 
     &__content {
@@ -26,6 +38,18 @@
         font-size: 76px;
         letter-spacing: 0.02em;
         margin: 0px 0px 10px 7px;
+
+        @media (max-width: $md) {
+            font-size: 60px;
+        }
+
+        @media (max-width: $sm) {
+            font-size: 50px;
+        }
+
+        @media (max-width: 340px) {
+            font-size: 40px;
+        }
     }
 
     &__subtitle {
@@ -35,11 +59,19 @@
         border-bottom: 1px solid $bl;
         display: inline-block;
 
+        @media (max-width: $md) {
+            font-size: 35px;
+        }
+
         span {
             font-size: 34px;
             line-height: 1;
             color: $gl;
             display: block;
+
+            @media (max-width: $md) {
+                font-size: 25px;
+            }
         }
     }
 

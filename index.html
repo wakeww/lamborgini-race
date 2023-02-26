@@ -17,27 +17,48 @@
             </div>
             <nav class="menu__body">
               <ul class="menu__list menu__list_left">
-                <li><a href="#" class="menu__link">О гонке</a></li>
-                <li><a href="#" class="menu__link">Трек</a></li>
                 <li>
-                  <a href="#" class="menu__link">Lamborghini Super trofeo</a>
+                  <a href="#" data-goto=".main__info" class="menu__link"
+                    >О гонке</a
+                  >
                 </li>
-                <li><a href="#" class="menu__link">Новости</a></li>
+                <li>
+                  <a href="#" data-goto=".main__track" class="menu__link"
+                    >Трек</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-goto=".main__evo" class="menu__link"
+                    >Lamborghini Super trofeo</a
+                  >
+                </li>
+                <li><a href="#" data-goto="" class="menu__link">Новости</a></li>
               </ul>
-              <a class="header__logo" href="#">
+              <a
+                class="menu__logo header__logo"
+                data-goto=".main__main-block"
+                href="#">
                 <img src="./img/header/01.svg" alt="logo" />
               </a>
               <ul class="menu__list menu__list_right">
-                <li><a href="#" class="menu__link">Купить билеты</a></li>
-                <li><a href="#" class="menu__link">Смотреть онлайн</a></li>
-                <li><a href="#" class="menu__link">Контакты</a></li>
+                <li>
+                  <a href="#" data-goto="" class="menu__link">Купить билеты</a>
+                </li>
+                <li>
+                  <a href="#" data-goto="" class="menu__link"
+                    >Смотреть онлайн</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-goto="" class="menu__link">Контакты</a>
+                </li>
               </ul>
             </nav>
           </div>
         </div>
       </header>
       <main class="main">
-        <section class="main-block">
+        <section class="main__main-block main-block">
           <div class="container">
             <div class="main-block__inner">
               <div class="main-block__content">
@@ -47,13 +68,13 @@
                 </h2>
                 <p class="main-block__text">автодром Портимао,Португалия</p>
               </div>
-              <a href="#" class="main-block__arrow">
+              <a href="#" class="main-block__arrow block-scroll">
                 <img src="./img/main-block/02.svg" alt="arrow" />
               </a>
             </div>
           </div>
         </section>
-        <section class="info">
+        <section class="main__info info">
           <div class="container">
             <div class="info__block info__block_db">
               <h3 class="info__title title">СУПЕР ТРОФЕО МИРОВОЙ ФИНАЛ</h3>
@@ -156,7 +177,7 @@
             </div>
           </div>
         </section>
-        <section class="track">
+        <section class="main__track track">
           <div class="container">
             <div class="track__inner">
               <div class="track__content">
@@ -172,6 +193,93 @@
               </div>
               <div class="track__image">
                 <img src="./img/track/02.png" alt="car" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="evo main__evo">
+          <div class="evo__black evo-black">
+            <div class="container">
+              <div class="evo-black__inner">
+                <div class="evo-black__info">
+                  <div class="evo-black__title title">СУПЕР ТРОФЕО ЭВО</div>
+                  <div class="evo-black__info-box">
+                    <p class="evo-black__text">
+                      Новый Huracán Super Trofeo EVO достигает еще больших
+                      высот, чем его прославленный предшественник, благодаря
+                      полностью переработанной аэродинамике. Huracán Super
+                      Trofeo EVO является идеальной стартовой площадкой для всех
+                      водителей, которые хотят начать карьеру в гонках класса
+                      GT.
+                    </p>
+                    <p class="evo-black__text">
+                      Huracán EVO — это эволюция самого успешного Lamborghini с
+                      двигателем V10. В результате тонкой настройки и
+                      усовершенствования существующих функций в сочетании с
+                      новыми конструктивными решениями, повышающими
+                      производительность, автомобиль выделяется своей
+                      способностью предугадывать и удовлетворять поведение,
+                      ожидания и желания водителя.
+                    </p>
+                  </div>
+                </div>
+                <div class="evo-black__image">
+                  <img src="./img/evo/01.png" alt="Huracán Super Trofeo EVO" />
+                </div>
+                <dl class="evo-black__descr-list">
+                  <div>
+                    <dt>ПЕРЕМЕЩЕНИЕ</dt>
+                    <dt>5204 см³</dt>
+                  </div>
+                  <div>
+                    <dt>КРУТЯЩИЙ МОМЕНТ</dt>
+                    <dt>570 Нм при 6500 об/мин</dt>
+                  </div>
+                  <div>
+                    <dt>МОЩНОСТЬ (л.с.) / МОЩНОСТЬ (КВТ)</dt>
+                    <dt>620 л.с. при 8250 об/мин</dt>
+                  </div>
+                  <div>
+                    <dt>МАКС. СКОРОСТЬ</dt>
+                    <dt>325 км /ч</dt>
+                  </div>
+                  <div>
+                    <dt>0-100 КМ/Ч</dt>
+                    <dt>2,9 с</dt>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="evo__white evo-white">
+            <div class="container">
+              <div class="evo-white__inner">
+                <p class="evo-white__text">
+                  Его неповторимый дизайн — это естественная эволюция культовых
+                  линий Huracán, включающая новые сложные решения, поднимающие
+                  производительность и вызывающие эмоции на невиданный ранее
+                  уровень.
+                </p>
+                <p class="evo-white__text">
+                  Беспрецедентный обвес был разработан инженерами отдела
+                  автоспорта Automobili Lamborghini в сотрудничестве с Dallara
+                  Engineering и Lamborghini Centro Stile. Последний также
+                  разработал стартовую ливрею для автомобиля в честь партнерства
+                  между Lamborghini Squadra Corse и Roger Dubuis, которое
+                  началось в 2018 году.
+                </p>
+                <p class="evo-white__text">
+                  Среди наиболее очевидных изменений в обвесе Lamborghini
+                  Huracan Super Trofeo EVO — задний спойлер на заднем капоте и
+                  верхний воздухозаборник, которые делают его мгновенно
+                  узнаваемым для зрителей.
+                </p>
+                <div class="evo-white__video">
+                  <a href="" class="evo-white__link">
+                    <img src="./img/evo/07.svg" alt="Watch online" />
+                    <span>Смотреть онлайн</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
