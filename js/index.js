@@ -105,7 +105,7 @@ if (readMoreLinks.length > 0) {
         showTarget.classList.toggle("_visible");
 
         if (showTarget.classList.contains("_visible")) {
-          event.target.innerHTML = "Скрыть содержимое";
+          event.target.innerHTML = "скрыть содержимое";
         } else {
           event.target.innerHTML = "читать подробнее...";
         }
@@ -122,64 +122,216 @@ if (readMoreLinks.length > 0) {
   );
 }
 
+// Открыть содержимое
+const openLinks = document.querySelectorAll("[data-show-content]");
+if (openLinks.length > 0) {
+  openLinks.forEach((openLink) => {
+    openLink.onclick = function (event) {
+      let openTargets = document.querySelectorAll(openLink.dataset.showContent);
+
+      if (openTargets.length > 0) {
+        openTargets.forEach((openTarget) => {
+          openTarget.classList.add("_visible");
+          event.currentTarget.hidden = !event.currentTarget.hidden;
+        });
+      }
+    };
+  });
+}
+
 // Слайдер
-const sliderArrowRight = document.querySelector(".slider-blog__arrow_r");
-const sliderArrowLeft = document.querySelector(".slider-blog__arrow_l");
+const sliderArrowNext = document.querySelector(".slider-blog__arrow_next");
+const sliderArrowPrev = document.querySelector(".slider-blog__arrow_prev");
 
 const sliderLine = document.querySelector(".slider-blog__line");
 
 const sliderSlides = document.querySelectorAll(".slider-blog__slide");
 
 let slideWidth;
-sliderSlides[0].querySelector("img").onload = function () {
-  slideWidth = sliderSlides[0].offsetWidth;
-};
 
 let slidesCount = sliderSlides.length;
 let columnGap = parseFloat(getComputedStyle(sliderLine).columnGap);
 
 let position = 0;
 
-sliderArrowRight.onclick = function () {
+sliderArrowNext.onclick = function () {
+  slideWidth = sliderSlides[0].offsetWidth;
+
   position = position - slideWidth - columnGap;
 
-  if (position < -(slideWidth * (slidesCount - 2) + columnGap)) {
-    position = -(slideWidth * (slidesCount - 2) + columnGap);
+  if (position < -((slideWidth + columnGap) * (slidesCount - 2))) {
+    position = -((slideWidth + columnGap) * (slidesCount - 2));
   }
 
   let swipedSlide = sliderSlides[Math.round(-(position / slideWidth)) - 1];
-
   let visibleText = swipedSlide.querySelector("._visible");
 
-  if (visibleText) {
-    visibleText.classList.remove("_visible");
-    swipedSlide.querySelector("[data-show-more]").innerHTML =
-      "читать подробнее...";
-    swipedSlide.querySelector("[class$='dots']").hidden =
-      !swipedSlide.querySelector("[class$='dots']").hidden;
-  }
+  removeVisible(swipedSlide, visibleText);
 
   sliderLine.style.left = position + "px";
 };
 
-sliderArrowLeft.onclick = function () {
-  position = position + slideWidth;
+sliderArrowPrev.onclick = function () {
+  slideWidth = sliderSlides[0].offsetWidth;
+
+  position = position + slideWidth + columnGap;
 
   if (position >= -slideWidth) {
     position = 0;
   }
 
   let swipedSlide = sliderSlides[Math.round(-(position / slideWidth)) + 2];
-
   let visibleText = swipedSlide.querySelector("._visible");
 
-  if (visibleText) {
-    visibleText.classList.remove("_visible");
-    swipedSlide.querySelector("[data-show-more]").innerHTML =
-      "читать подробнее...";
-    swipedSlide.querySelector("[class$='dots']").hidden =
-      !swipedSlide.querySelector("[class$='dots']").hidden;
-  }
+  removeVisible(swipedSlide, visibleText);
 
   sliderLine.style.left = position + "px";
 };
+
+// Убирать текст открытый кнопокой "читать подробнее..." при прокрутке слайда за экран.
+function removeVisible(container, visibleText) {
+  if (visibleText) {
+    visibleText.classList.remove("_visible");
+    container.querySelector("[data-show-more]").innerHTML =
+      "читать подробнее...";
+    container.querySelector("[class$='dots']").hidden =
+      !container.querySelector("[class$='dots']").hidden;
+  }
+}
+
+// Карта
+// let map;
+
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//     styles: [
+//       {
+//         featureType: "administrative",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             saturation: "-100",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "administrative.province",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             visibility: "off",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "landscape",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             saturation: -100,
+//           },
+//           {
+//             lightness: 65,
+//           },
+//           {
+//             visibility: "on",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "poi",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             saturation: -100,
+//           },
+//           {
+//             lightness: "50",
+//           },
+//           {
+//             visibility: "simplified",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "road",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             saturation: "-100",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "road.highway",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             visibility: "simplified",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "road.arterial",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             lightness: "30",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "road.local",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             lightness: "40",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "transit",
+//         elementType: "all",
+//         stylers: [
+//           {
+//             saturation: -100,
+//           },
+//           {
+//             visibility: "simplified",
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "water",
+//         elementType: "geometry",
+//         stylers: [
+//           {
+//             hue: "#ffff00",
+//           },
+//           {
+//             lightness: -25,
+//           },
+//           {
+//             saturation: -97,
+//           },
+//         ],
+//       },
+//       {
+//         featureType: "water",
+//         elementType: "labels",
+//         stylers: [
+//           {
+//             lightness: -25,
+//           },
+//           {
+//             saturation: -100,
+//           },
+//         ],
+//       },
+//     ],
+//   });
+// }
+
+// window.initMap = initMap;
