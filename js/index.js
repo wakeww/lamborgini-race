@@ -232,7 +232,7 @@ function removeVisible(container, visibleText) {
 
     let noFlexGrow = container.closest("._no-flex-grow");
 
-    if (noFlexGrow) {
+    if (noFlexGrow && !noFlexGrow.querySelector("._visible")) {
       noFlexGrow.classList.remove("_no-flex-grow");
     }
   }
