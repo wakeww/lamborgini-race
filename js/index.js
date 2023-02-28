@@ -150,20 +150,22 @@ const sliderSlides = document.querySelectorAll(".slider-blog__slide");
 let slideWidth;
 
 let slidesCount = sliderSlides.length;
-let columnGap = parseFloat(getComputedStyle(sliderLine).columnGap);
+let columnGap;
+
+let slidesPerView = 2;
+let swipedSlide;
+
+let max = -((slideWidth + columnGap) * (slidesCount - slidesPerView));
 
 let position = 0;
 
 sliderArrowNext.onclick = function () {
+  columnGap = parseFloat(getComputedStyle(sliderLine).columnGap);
   slideWidth = sliderSlides[0].offsetWidth;
 
-  position = position - slideWidth - columnGap;
+  rollNext();
 
-  if (position < -((slideWidth + columnGap) * (slidesCount - 2))) {
-    position = -((slideWidth + columnGap) * (slidesCount - 2));
-  }
-
-  let swipedSlide = sliderSlides[Math.round(-(position / slideWidth)) - 1];
+  swipedSlide = sliderSlides[Math.round(-(position / slideWidth)) - 1];
   let visibleText = swipedSlide.querySelector("._visible");
 
   removeVisible(swipedSlide, visibleText);
@@ -172,15 +174,13 @@ sliderArrowNext.onclick = function () {
 };
 
 sliderArrowPrev.onclick = function () {
+  columnGap = parseFloat(getComputedStyle(sliderLine).columnGap);
   slideWidth = sliderSlides[0].offsetWidth;
 
-  position = position + slideWidth + columnGap;
+  rollPrev();
 
-  if (position >= -slideWidth) {
-    position = 0;
-  }
-
-  let swipedSlide = sliderSlides[Math.round(-(position / slideWidth)) + 2];
+  swipedSlide =
+    sliderSlides[Math.round(-(position / slideWidth)) + slidesPerView];
   let visibleText = swipedSlide.querySelector("._visible");
 
   removeVisible(swipedSlide, visibleText);
@@ -188,16 +188,61 @@ sliderArrowPrev.onclick = function () {
   sliderLine.style.left = position + "px";
 };
 
+// rollNext()
+function rollNext() {
+  position = position - slideWidth - columnGap;
+
+  if (document.documentElement.clientWidth <= 992) {
+    slidesPerView = 1;
+  } else {
+    slidesPerView = 2;
+  }
+
+  max = -((slideWidth + columnGap) * (slidesCount - slidesPerView));
+
+  if (position < max) {
+    position = max;
+  }
+}
+
+// rollPrev()
+function rollPrev() {
+  position = position + slideWidth + columnGap;
+
+  if (document.documentElement.clientWidth <= 992) {
+    slidesPerView = 1;
+  } else {
+    slidesPerView = 2;
+  }
+
+  if (position >= -slideWidth) {
+    position = 0;
+  }
+}
+
 // Убирать текст открытый кнопокой "читать подробнее..." при прокрутке слайда за экран.
 function removeVisible(container, visibleText) {
   if (visibleText) {
     visibleText.classList.remove("_visible");
     container.querySelector("[data-show-more]").innerHTML =
       "читать подробнее...";
-    container.querySelector("[class$='dots']").hidden =
-      !container.querySelector("[class$='dots']").hidden;
+
+    let dots = container.querySelector("[class$='dots']");
+    dots.hidden = !dots.hidden;
+
+    let noFlexGrow = container.closest("._no-flex-grow");
+
+    if (noFlexGrow) {
+      noFlexGrow.classList.remove("_no-flex-grow");
+    }
   }
 }
+
+// Возвращать слайдер в начальное положение при смене размера вьюпорта
+window.addEventListener("resize", function () {
+  position = 0;
+  sliderLine.style.left = position + "px";
+});
 
 // Карта
 // let map;

@@ -1,0 +1,218 @@
+@import "_variables";
+//*--------------------------------------evo-------------------------------------------
+.evo {
+    margin: 0px 0px 100px 0px;
+    @media (max-width: $md) {
+        margin: 0px 0px 50px 0px;
+    }
+    @media (max-width: $sm) {
+        margin: 0px 0px 25px 0px;
+    }
+}
+
+.evo-black {
+    background-color: #363636;
+    padding: 100px 0px 50px 0px;
+    color: #fff;
+
+    @media (max-width: $md) {
+        padding: 70px 0px 35px 0px;
+    }
+    @media (max-width: $sm) {
+        padding: 35px 0px 25px 0px;
+    }
+    &__inner {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            background: url(../img/evo/02.svg) center/cover no-repeat;
+            width: 185px;
+            height: 213px;
+            top: 29%;
+            left: -137px;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            background: url(../img/evo/03.svg) center/cover no-repeat;
+            width: 498px;
+            height: 572px;
+            top: 41%;
+            left: -38px;
+            @media (max-width: $sm) {
+                display: none;
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: $sm) {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    &__title {
+        padding: 0px 40px 0px 0px;
+        @media (max-width: $md) {
+            padding: 0px 25px 0px 0px;
+        }
+        @media (max-width: $sm) {
+            margin: 0px 0px 20px 0px;
+            padding-right: 0;
+        }
+    }
+
+    &__info-box {
+        flex-basis: 437px;
+    }
+
+    &__text {
+        margin: 0px 0px 30px 0px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__image {
+        margin: 198px auto 58px auto;
+        @media (max-width: $md) {
+            margin: 120px auto 30px auto;
+        }
+        @media (max-width: $sm) {
+            margin: 80px auto 20px auto;
+        }
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__descr-list {
+        display: flex;
+        justify-content: center;
+        gap: 0 65px;
+        @media (max-width: $md) {
+            gap: 0 40px;
+            flex-wrap: wrap;
+            text-align: center;
+            div {
+                flex: 0 1 100%;
+                margin: 0px 0px 20px 0px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        dd {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.evo-white {
+    &__inner {
+        padding: 125px 0px 0px 0px;
+        @media (max-width: $md) {
+            padding: 75px 0px 0px 0px;
+        }
+        @media (max-width: $sm) {
+            padding: 40px 0px 0px 0px;
+        }
+
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            background: url(../img/evo/04.png) center/cover no-repeat;
+            width: 274px;
+            height: 257px;
+            top: -22px;
+            left: 38%;
+            @media (max-width: $md) {
+                display: none;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            background: url(../img/evo/05.png) center/cover no-repeat;
+            width: 324px;
+            height: 311px;
+            top: 16%;
+            left: 64%;
+            @media (max-width: 900px) {
+                display: none;
+            }
+        }
+    }
+
+    &__text {
+        margin: 0px 0px 30px 0px;
+        @media (max-width: $md) {
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: $sm) {
+            text-align: center;
+        }
+        @media (max-width: $sm) {
+            margin: 0px 0px 20px 0px;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            max-width: 285px;
+        }
+
+        &:nth-child(2) {
+            max-width: 437px;
+        }
+
+        &:nth-child(3) {
+            max-width: 590px;
+        }
+
+        @media (max-width: $md) {
+            &:first-child,
+            &:nth-child(2),
+            &:nth-child(3) {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__video {
+        margin-top: 100px;
+        @media (max-width: $md) {
+            margin-top: 75px;
+        }
+        @media (max-width: $sm) {
+            margin-top: 45px;
+        }
+        background: url(../img/evo/06.png) center/cover no-repeat;
+        height: 264px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__link {
+        span {
+            display: block;
+            color: #fff;
+        }
+    }
+}
